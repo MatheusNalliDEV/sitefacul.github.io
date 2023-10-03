@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos Mensais</title>
+    <style>
+        body {
+            background-color: white; /* Fundo branco */
+            font-family: Arial, sans-serif;
+            color: black; /* Texto preto */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #845EC2; /* Cor roxa para o título */
+            color: #00C9A7; /* Cor verde-água para o texto do título */
+            padding: 10px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Controle de Gastos Mensais</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Valor (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aluguel</td>
+                <td><input type="number" id="aluguel" oninput="calcularTotal()"></td>
+            </tr>
+            <tr>
+                <td>Contas</td>
+                <td><input type="number" id="contas" oninput="calcularTotal()"></td>
+            </tr>
+            <tr>
+                <td>Mercado</td>
+                <td><input type="number" id="mercado" oninput="calcularTotal()"></td>
+            </tr>
+            <tr>
+                <td>Lazer</td>
+                <td><input type="number" id="lazer" oninput="calcularTotal()"></td>
+            </tr>
+            <tr>
+                <td>Investimentos</td>
+                <td><input type="number" id="investimentos" oninput="calcularTotal()"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td id="total">0.00</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        function calcularTotal() {
+            const aluguel = parseFloat(document.getElementById("aluguel").value) || 0;
+            const contas = parseFloat(document.getElementById("contas").value) || 0;
+            const mercado = parseFloat(document.getElementById("mercado").value) || 0;
+            const lazer = parseFloat(document.getElementById("lazer").value) || 0;
+            const investimentos = parseFloat(document.getElementById("investimentos").value) || 0;
+
+            const total = aluguel + contas + mercado + lazer + investimentos;
+            document.getElementById("total").textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
